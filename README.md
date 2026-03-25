@@ -1,12 +1,45 @@
-- 👋 Hi, I’m @Jacobm911
-- 👀 I’m interested in ...
-- 🌱 I’m currently learning ...
-- 💞️ I’m looking to collaborate on ...
-- 📫 How to reach me ...yacop.mazen@yahoo.com
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
+# Agent Lite PWA (Teams-style starting point)
 
-<!---
-Jacobm911/Jacobm911 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+A lightweight Progressive Web App chat shell with a built-in local demo backend.
+
+## Quick run (works end-to-end)
+
+```bash
+node server.js
+```
+
+Open: `http://localhost:4173`
+
+This starts:
+- static file hosting for the PWA UI
+- `POST /api/agent` demo endpoint (echo response)
+
+## Test the API directly
+
+```bash
+curl -X POST http://localhost:4173/api/agent \
+  -H 'Content-Type: application/json' \
+  -d '{"prompt":"hello"}'
+```
+
+Expected response:
+
+```json
+{"reply":"Echo agent: hello"}
+```
+
+## How it is wired
+
+- `index.html` is the UI shell (header, chat log, composer).
+- `app.js` handles input, network request to `/api/agent`, and rendering messages.
+- `server.js` serves static files and handles `POST /api/agent`.
+- `sw.js` caches core static files so the shell works offline.
+- `manifest.webmanifest` allows install-as-app behavior.
+
+## Replace demo agent with real model
+
+In `server.js`, replace the echo response block with your model call and return JSON:
+
+```json
+{ "reply": "<model output>" }
+```
