@@ -1,38 +1,45 @@
 # Agent Lite PWA (Teams-style starting point)
 
-A lightweight Progressive Web App chat shell that can connect to your own agent backend.
+A lightweight Progressive Web App chat shell with a built-in local demo backend.
 
-## Run locally
+## Quick run (works end-to-end)
 
 ```bash
-python3 -m http.server 4173
+node server.js
 ```
 
-Then open `http://localhost:4173`.
+Open: `http://localhost:4173`
+
+This starts:
+- static file hosting for the PWA UI
+- `POST /api/agent` demo endpoint (echo response)
+
+## Test the API directly
+
+```bash
+curl -X POST http://localhost:4173/api/agent \
+  -H 'Content-Type: application/json' \
+  -d '{"prompt":"hello"}'
+```
+
+Expected response:
+
+```json
+{"reply":"Echo agent: hello"}
+```
 
 ## How it is wired
 
 - `index.html` is the UI shell (header, chat log, composer).
 - `app.js` handles input, network request to `/api/agent`, and rendering messages.
+- `server.js` serves static files and handles `POST /api/agent`.
 - `sw.js` caches core static files so the shell works offline.
 - `manifest.webmanifest` allows install-as-app behavior.
 
-## Backend contract
+## Replace demo agent with real model
 
-`POST /api/agent` with JSON body:
-
-```json
-{ "prompt": "hello" }
-```
-
-Response JSON:
+In `server.js`, replace the echo response block with your model call and return JSON:
 
 ```json
-{ "reply": "hi" }
+{ "reply": "<model output>" }
 ```
-
-## Next steps
-
-1. Add auth token flow before calling `/api/agent`.
-2. Add streaming replies (SSE or WebSocket).
-3. Add conversation persistence (IndexedDB + server sync).
