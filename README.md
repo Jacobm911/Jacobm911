@@ -11,7 +11,6 @@ Network Status Tracking: Monitors and displays whether the user is online or off
 API Communication: Sends user prompts via an asynchronous POST request to a backend endpoint (/api/agent) and handles responses or errors.
 
 Service Worker Registration: Registers a service worker (/sw.js) to support offline capabilities or caching.
-**Jacobm911/Jacobm911** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
 Here are some ideas to get you started:
 
