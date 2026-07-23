@@ -1,4 +1,4 @@
-# Agent API
+# Agent Lite PWA Chat)
 Building AI course project
 
 ## Summary
