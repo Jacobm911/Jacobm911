@@ -42,6 +42,8 @@ In `server.js`, replace the echo response block with your model call and return 
 
 ```json
 { "reply": "<model output>" }
+
+"## Summary"
 ```
 #### Summary 
 DOM Management: Captures user input from a form (composer), appends user and agent messages dynamically to a chat log, and auto-scrolls to the newest message.
